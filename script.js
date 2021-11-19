@@ -83,6 +83,7 @@ function getRandomPosition(min, max) {
 }
 
 resultInput.addEventListener("change", () => {
+  let rain = document.querySelector('.circle');
  
   if (resultInput.value == result) {
     bonusCount += 1;
@@ -92,9 +93,10 @@ resultInput.addEventListener("change", () => {
     // rightAnswer += 1;
     // gameSpeed(rightAnswer);
     audioPlay("right");
+    gameField.removeChild(rain);
 	}
-	 let rain = document.querySelector('.circle');
-	 gameField.removeChild(rain);
+	
+
 
 	
   resultInput.value = "";
