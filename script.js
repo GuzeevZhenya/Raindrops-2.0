@@ -84,7 +84,6 @@ function getRandomPosition(min, max) {
 
 resultInput.addEventListener("change", () => {
   let rain = document.querySelector('.circle');
- 
   if (resultInput.value == result) {
     bonusCount += 1;
     resultInput.value = "";
@@ -104,9 +103,11 @@ function raindropLife() {
   let raindrop = document.querySelector('.circle');
   let raindropSize = parseInt(window.getComputedStyle(raindrop).getPropertyValue('top'));
   let windowMaxHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight) - waveSize;
-  console.log(windowMaxHeight)
-  console.log(raindropSize)
-  console.log(raindrop)
+  const gameField = document.querySelectorAll('.raindrop')
+  console.log(gameField)
+  for (let i = 0; i < gameField.length; i++){
+    console.log(gameField[i])
+  }
   	if (raindropSize >= windowMaxHeight) {
   		errors += 1;
   		resultInput.value = '';
@@ -115,7 +116,7 @@ function raindropLife() {
       gameField.removeChild(raindrop);
   }
 }
-setInterval(raindropLife, 1000);
+setInterval(raindropLife, 3000);
  
 
 
