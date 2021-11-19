@@ -27,7 +27,7 @@ gameOver.style.display = "none";
 
 function createNewRaindrop(x = 40) {
   let raindrop = document.createElement("div");
-  raindrop.style.animationDuration = "5s";
+  raindrop.style.animationDuration = "10s";
   let { firstNumber, operation, secondNumber } = generateEquationNumbers();
 
   switch (operation) {
@@ -59,7 +59,7 @@ function createNewRaindrop(x = 40) {
   // window.setTimeout(function () {
   //   gameField.removeChild(raindrop);
 	// }, 3500);
-   
+ 
 	return raindrop;
 }
 
@@ -97,14 +97,27 @@ resultInput.addEventListener("change", () => {
 	}
 	
 
-
-	
   resultInput.value = "";
 });
 
-
+function raindropLife() {
+  let raindrop = document.querySelector('.circle');
+  let raindropSize = parseInt(window.getComputedStyle(raindrop).getPropertyValue('top'));
+  let windowMaxHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight) - waveSize;
+  console.log(windowMaxHeight)
+  console.log(raindropSize)
+  console.log(raindrop)
+  	if (raindropSize >= windowMaxHeight) {
+  		errors += 1;
+  		resultInput.value = '';
+  		// waveClass.waveGrow();
+      count.textContent = +count.textContent - 7 + bonusCount;
+      gameField.removeChild(raindrop);
+  }
+}
+setInterval(raindropLife, 1000);
  
-// setInterval(raindropLife, 1000);
+
 
 // function raindropLife() {
 // 	let raindropSize = parseInt(window.getComputedStyle(raindrop).getPropertyValue('top'));
